@@ -23,3 +23,12 @@ zuul:
       path: /github/**
       url: https://baidu.com/
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'prometheus'
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
