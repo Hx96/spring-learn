@@ -1,0 +1,18 @@
+package com.hx.springcloud.entities;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * @author 35762
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class CommonResult <T>{
+  private Integer code;
+  private String message;
+  private T data;
+
+}
