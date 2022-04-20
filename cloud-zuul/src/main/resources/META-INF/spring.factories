@@ -1,0 +1,4 @@
+org.springframework.boot.SpringApplicationRunListener=\
+ org.hx.zuul.config.MyApplicationListener
+org.springframework.context.ApplicationContextInitializer=\
+  org.hx.zuul.config.MyApplicationContextInitializer 

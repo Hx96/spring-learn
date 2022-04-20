@@ -7,6 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author XingHuang
@@ -19,6 +20,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 @EnableHystrix
 public class ZuulApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ZuulApplication.class, args);
+        ConfigurableApplicationContext run = SpringApplication.run(ZuulApplication.class, args);
+        System.out.println(run.getBeanDefinitionCount());
     }
 }
