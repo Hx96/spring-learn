@@ -31,4 +31,6 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
-
+    binders:
+      hystrix:
+        enabled: false
