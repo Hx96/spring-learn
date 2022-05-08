@@ -4,11 +4,27 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author XingHuang
  */
 public class Test03 {
+
+    public static void main(String[] args) {
+//        Phone phone = new Phone1();
+//        Phone phone2 = new Phone1();
+
+        new Thread(Phone1::sendSms, "A").start();
+
+        new Thread(Phone1::call, "B").start();
+
+        try {
+            TimeUnit.SECONDS.sleep(6);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Test
     public void testMap() {
@@ -16,7 +32,89 @@ public class Test03 {
         for (int i = 0; i < str.length(); i++) {
             System.out.println(str.charAt(i));
         }
-        Map<Integer, Character> map= new HashMap<>();
+        Map<Integer, Character> map = new HashMap<>();
         map.containsValue("");
+    }
+
+    /**
+     * 打印发短信
+     */
+    @Test
+    public void test1() {
+        Phone phone = new Phone();
+
+        new Thread(phone::sendSms, "A").start();
+
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        new Thread(phone::call, "B").start();
+    }
+
+    @Test
+    public void test2() {
+        Phone phone = new Phone();
+        Phone phone2 = new Phone();
+
+        new Thread(phone::sendSms, "A").start();
+
+        new Thread(phone2::call, "B").start();
+
+        try {
+            TimeUnit.SECONDS.sleep(6);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+}
+
+class Phone {
+    public synchronized void sendSms() {
+        try {
+            TimeUnit.SECONDS.sleep(4);
+        } catch (InterruptedException e) {
+            System.out.println("1");
+            throw new RuntimeException(e);
+        }
+        System.out.println("sendSms");
+    }
+
+    public synchronized void call() {
+        System.out.println("call");
+    }
+
+    public void hello() {
+        System.out.println("hello");
+    }
+}
+
+class Phone1 {
+    public static  void sendSms() {
+        synchronized(Phone1.class){
+            try {
+                TimeUnit.SECONDS.sleep(4);
+            } catch (InterruptedException e) {
+                System.out.println("1");
+                throw new RuntimeException(e);
+            }
+            System.out.println("sendSms");
+        }
+
+    }
+
+    public static void call() {
+        synchronized(Phone1.class){
+            System.out.println("call");
+        }
+    }
+
+    public void hello() {
+        System.out.println("hello");
     }
 }
