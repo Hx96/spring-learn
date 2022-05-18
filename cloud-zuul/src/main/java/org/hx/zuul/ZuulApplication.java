@@ -1,5 +1,6 @@
 package org.hx.zuul;
 
+import org.hx.zuul.config.MyApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -20,7 +21,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableHystrix
 public class ZuulApplication {
     public static void main(String[] args) {
-        ConfigurableApplicationContext run = SpringApplication.run(ZuulApplication.class, args);
+        ConfigurableApplicationContext run = MyApplication.run(ZuulApplication.class, args);
         System.out.println(run.getBeanDefinitionCount());
     }
 }
