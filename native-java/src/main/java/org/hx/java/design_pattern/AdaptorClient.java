@@ -1,8 +1,23 @@
 package org.hx.java.design_pattern;
 
+import org.hx.java.design_pattern.spi.Search;
 import org.junit.Test;
 
+import java.util.Iterator;
+import java.util.ServiceLoader;
+
 public class AdaptorClient {
+
+    @Test
+    public void testSpi() {
+
+        ServiceLoader<Search> s = ServiceLoader.load(Search.class);
+        Iterator<Search> iterator = s.iterator();
+        while (iterator.hasNext()) {
+            Search search =  iterator.next();
+            search.searchDoc("hello world");
+        }
+    }
 
     @Test
     public void main() {
