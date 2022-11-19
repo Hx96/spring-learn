@@ -19,6 +19,7 @@
       <module>hx-shiro</module>
     <module>native-java</module>
     <module>hx-mybatis</module>
+    <module>spring-native</module>
   </modules>
   <packaging>pom</packaging>
   <parent>
