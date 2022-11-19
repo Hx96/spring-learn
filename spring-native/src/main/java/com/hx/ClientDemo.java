@@ -1,5 +1,6 @@
 package com.hx;
 
+import com.mzt.logapi.starter.annotation.EnableLogRecord;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +17,7 @@ import java.util.Arrays;
  */
 @SpringBootApplication
 @RestController
+@EnableLogRecord(tenant = "com.hx")
 public class ClientDemo implements CommandLineRunner {
 
 
