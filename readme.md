@@ -1,4 +1,14 @@
+# 模块分层
+native-java: 原生java相关：设计模式等。
+spring-java: 基础Spring java项目: 一些spring java相关的实现。
 这个项目是学习Spring Cloud时的实战项目
+
+
+
+
+
+
+
 
 # 微服务模块
 1. 建module
