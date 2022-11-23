@@ -1,5 +1,6 @@
 package com.hx;
 
+import com.hx.map_auto.Animal;
 import com.mzt.logapi.starter.annotation.EnableLogRecord;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author kyle
@@ -21,6 +24,12 @@ import java.util.Arrays;
 @EnableLogRecord(tenant = "com.hx")
 @ServletComponentScan(basePackages = "com.hx")
 public class ClientDemo implements CommandLineRunner {
+
+    @Resource
+    public Map<String, Animal> animals;
+
+    @Resource
+    public List<Animal> animalsList;
 
 
     public static void main(String[] args) {
@@ -36,6 +45,8 @@ public class ClientDemo implements CommandLineRunner {
 
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+        System.out.println(animals);
+        animalsList.forEach(Animal::say);
         return args -> {
             System.out.println("Let's inspect the beans provided by Spring Boot:");
             String[] beanNames = ctx.getBeanDefinitionNames();
