@@ -1,6 +1,7 @@
 package org.hx.java.design_pattern.template;
 
 /**
+ * https://mp.weixin.qq.com/s/ImRA8SI0y8tEDlY8dkPhqA
  * 模板加工厂消除重复代码
  * Cart 购物车
  * VipCart 购物车
