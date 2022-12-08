@@ -1,0 +1,5 @@
+Safe from bugs. An ADT is defined by its operations, and interfaces do just that. When clients use an interface type, static checking ensures that they only use methods defined by the interface. If the implementation class exposes other methods — or worse, has visible representation — the client can’t accidentally see or depend on them. When we have multiple implementations of a data type, interfaces provide static checking of the method signatures.
+
+Easy to understand. Clients and maintainers know exactly where to look for the specification of the ADT. Since the interface doesn’t contain fields or implementations of instance methods, it’s easier to keep details of the implementation out of the specifications.
+
+Ready for change. We can easily add new implementations of a type by adding classes that implement an interface. If we avoid constructors in favor of static factory methods, clients will only see the interface. That means we can switch which implementation class clients are using without changing their code at all.

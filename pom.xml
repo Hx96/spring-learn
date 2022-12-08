@@ -20,6 +20,7 @@
     <module>native-java</module>
     <module>hx-mybatis</module>
     <module>spring-native</module>
+      <module>common</module>
   </modules>
   <packaging>pom</packaging>
   <parent>
