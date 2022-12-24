@@ -23,6 +23,8 @@ public interface SingleScheduleProcessor<L extends LocalScheduleLock> extends Pr
         try {
             if (lock.tryLock()) {
                 process(args);
+            } else {
+                System.out.println(Thread.currentThread().getName() + " get lock failed");
             }
         } finally {
             if (lock.isHeldByCurrentThread()) {

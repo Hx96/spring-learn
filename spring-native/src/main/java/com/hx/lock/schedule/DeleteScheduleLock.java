@@ -1,6 +1,7 @@
 package com.hx.lock.schedule;
 
 import com.hx.lock.LocalScheduleLock;
+import com.hx.lock.LockName;
 
 /**
  * 删除表锁
@@ -10,4 +11,7 @@ import com.hx.lock.LocalScheduleLock;
  */
 public class DeleteScheduleLock extends LocalScheduleLock {
 
+    public DeleteScheduleLock(LockName lockNameEnm) {
+        super(lockNameEnm);
+    }
 }
