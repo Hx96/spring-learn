@@ -8,6 +8,19 @@ import java.util.Optional;
 
 public class ClientTest {
 
+    class User {
+        String name;
+    }
+    @Test
+    public void test() {
+        User user = new User();
+        test1(user);
+    }
+
+    public void test1(Object obj) {
+        System.out.println(obj instanceof User);
+    }
+
     @Test
     public void testMain() {
         String str = null;

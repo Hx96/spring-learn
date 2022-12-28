@@ -32,6 +32,7 @@ public class LockClient {
 //
 //            }
         }
+        threadPoolExecutor.shutdown();
     }
 
     public static void sche() {
