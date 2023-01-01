@@ -1,10 +1,9 @@
-package org.hx.java.datatype;
+package org.hx.java.java8;
 
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 

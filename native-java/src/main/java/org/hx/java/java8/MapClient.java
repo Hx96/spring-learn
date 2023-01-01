@@ -1,4 +1,4 @@
-package org.hx.java.datatype;
+package org.hx.java.java8;
 
 import java.math.BigDecimal;
 
@@ -27,6 +27,6 @@ public class MapClient {
 
 
     public static void main(String[] args) {
-
+        System.out.println(Thread.currentThread().isDaemon());
     }
 }
