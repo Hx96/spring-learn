@@ -4,7 +4,9 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
@@ -70,6 +72,22 @@ public class MapClientTest {
         public Integer getNum() {
             return num;
         }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setMoney(BigDecimal money) {
+            this.money = money;
+        }
+
+        public void setNum(Integer num) {
+            this.num = num;
+        }
     }
 
     @Test
@@ -124,6 +142,36 @@ public class MapClientTest {
     public void toMap() {
         Map<Integer, Apple> collect = apples.stream().collect(Collectors.toMap(Apple::getId, Function.identity(), (key1, key2) -> key1));
         System.out.println(collect);
+    }
+
+    static class TestFunc {
+        public <T> T test(Supplier<T> supplier) {
+            return supplier.get();
+        }
+
+        public static TestFunc build() {
+            return new TestFunc();
+        }
+    }
+
+    @Test
+    public void testConvert() {
+        final String testSSS = ":l";
+        final List<Integer> list = new ArrayList<>();
+        Apple apple2 =  new Apple(2,"香蕉",new BigDecimal("2.89"),30);
+        int a = 555;
+        String test = TestFunc.build().test(() -> {
+            System.out.println("22");
+            System.out.println(testSSS);
+            list.add(2);
+            System.out.println(apple2.getMoney());
+            apple2.setId(1);
+            System.out.println(a);
+            return "11";
+        });
+        System.out.println(apple2);
+        System.out.println(test);
+        System.out.println(list);
     }
 }
 
