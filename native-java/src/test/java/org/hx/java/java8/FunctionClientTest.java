@@ -1,14 +1,25 @@
 package org.hx.java.java8;
 
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.hx.java.base.ListTest;
 import org.junit.Test;
+import org.slf4j.helpers.MessageFormatter;
+import org.springframework.util.StringUtils;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+
+@Slf4j
 public class FunctionClientTest {
     // https://www.cnblogs.com/Chary/p/13821147.html
 
@@ -74,7 +85,43 @@ public class FunctionClientTest {
 
     @Test
     public void testNot() {
-        ListTest.getInstance().stream();
+        Map<Integer, ListTest.Apple> collect =
+                ListTest.getInstance().stream()
+                        .collect(Collectors
+                                .toMap(ListTest.Apple::getId
+                                        , Function.identity()
+                                        , (key1, key2) -> key2));
+        System.out.println(collect);
+    }
+
+    @Test
+    public void testStream2Map() {
+        Stream<String> stream = Stream.of("I", "love", "you", "too");
+        Map<String, Integer> map = stream.collect(Collectors.toMap(Function.identity(), String::length));
+        System.out.println(map);
+        System.out.println(ListTest.getInstance().stream());
+        Stream<ListTest.Apple> stream1 = ListTest.getInstance().stream();
+        System.out.println(stream1);
+    }
+
+    @Test
+    public void optionalTest() {
+        List<String> list= new ArrayList<>();
+        list.add(null);
+        list.stream().findFirst().orElseThrow(()->new RuntimeException("xxx"));
+
+        Optional.ofNullable(null).orElseThrow(()->new RuntimeException("xxx"));
+        Optional.of(null).orElseThrow(()->new RuntimeException("xxx"));
+    }
+
+    @Test
+    public void testFormat() {
+        System.out.println(format("tetet{},float{},int{}", "sdsd",2.6,1));
+        log.error("xxxx{}", "xx");
+    }
+
+    public String format(String format, Object ... args) {
+        return MessageFormatter.arrayFormat(format, args).getMessage();
     }
 }
 
