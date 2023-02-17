@@ -21,12 +21,13 @@
     <module>hx-mybatis</module>
     <module>spring-native</module>
       <module>common</module>
+      <module>hx-ddd</module>
   </modules>
   <packaging>pom</packaging>
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.2.2.RELEASE</version>
+    <version>2.2.11.RELEASE</version>
   </parent>
 
 
@@ -50,7 +51,7 @@
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.2.11.RELEASE</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
