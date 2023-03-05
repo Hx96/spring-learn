@@ -1,8 +1,11 @@
 package com.hx.listen;
-import java.util.Date;
+
+import com.hx.inter.RegionIsolationHolder;
+
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
+import java.util.Date;
 
 @WebListener
 public class ListenerTest3 implements ServletRequestListener {
@@ -23,5 +26,7 @@ public class ListenerTest3 implements ServletRequestListener {
         System.out.println("历史访问次数：：" + count);
         cInteger++;
         arg0.getServletContext().setAttribute("count", cInteger);
+        RegionIsolationHolder.set(112L);
+
     }
 }

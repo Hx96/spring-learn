@@ -1,12 +1,11 @@
 package com.hx.listen;
+
+import com.hx.inter.RegionIsolationHolder;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSessionAttributeListener;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
-import javax.servlet.http.HttpSessionBindingEvent;
 
 @WebListener()
 public class MyServletContextListener implements ServletContextListener{
@@ -19,5 +18,7 @@ public class MyServletContextListener implements ServletContextListener{
         sc = sce.getServletContext();
         //将count放入到全局域中
         sc.setAttribute("count",count);
+        RegionIsolationHolder.set(113L);
+
     }
 }

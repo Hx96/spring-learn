@@ -1,9 +1,11 @@
-package com.hx.listen;import javax.servlet.*;
+package com.hx.listen;
+
+import com.hx.inter.RegionIsolationHolder;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRequestEvent;
+import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSessionAttributeListener;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
-import javax.servlet.http.HttpSessionBindingEvent;
 
 @WebListener()
 public class MyRequestListener implements ServletRequestListener{
@@ -20,5 +22,6 @@ public class MyRequestListener implements ServletRequestListener{
         count++;
         System.out.println(count);
         sc.setAttribute("count",count);
+        RegionIsolationHolder.set(111L);
     }
 }
