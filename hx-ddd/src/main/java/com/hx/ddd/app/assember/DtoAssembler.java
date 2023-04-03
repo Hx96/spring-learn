@@ -6,6 +6,7 @@ import com.hx.ddd.domain.model.Energy;
 import com.hx.ddd.domain.model.Goods;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -35,4 +36,13 @@ public interface DtoAssembler {
      */
     @Mapping(source = "c",target = "cargoEnergy")
     EnergyDTO toEnergyDTO(Energy energy);
+
+    /**
+     * 更新产品
+     *
+     * @param goodsDTO 货物dto
+     * @param car      车
+     */
+    void updateGoods(@MappingTarget GoodsDTO goodsDTO, Goods car);
+
 }

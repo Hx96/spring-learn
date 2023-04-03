@@ -16,7 +16,10 @@ public class GoodsAppService {
 
     public GoodsDTO getGoodsDTO() {
         Goods apple = Goods.builder().name("苹果").price(10L).build();
-        return DtoAssembler.INSTANCE.goodsToGoodsDto(apple);
+        Goods apple1 = Goods.builder().name("苹果").color("xx").build();
+        GoodsDTO goodsDTO = DtoAssembler.INSTANCE.goodsToGoodsDto(apple);
+        DtoAssembler.INSTANCE.updateGoods(goodsDTO,apple1);
+        return goodsDTO;
     }
 
     public EnergyDTO getEnergyDTO() {

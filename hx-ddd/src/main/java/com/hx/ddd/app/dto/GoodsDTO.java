@@ -19,4 +19,5 @@ public class GoodsDTO {
     private String goodsName;
     private Long price;
     private LocalDate createTime;
+    private String color;
 }

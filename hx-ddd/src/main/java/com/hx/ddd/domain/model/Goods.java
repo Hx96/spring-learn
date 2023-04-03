@@ -18,4 +18,5 @@ public class Goods {
     private Integer id;
     private String name;
     private Long price;
+    private String color;
 }
