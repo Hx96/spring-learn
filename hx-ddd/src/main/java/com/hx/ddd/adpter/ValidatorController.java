@@ -11,8 +11,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 验证器控制器
@@ -36,20 +35,18 @@ public class ValidatorController {
         /**
          * 请求序列号
          */
-        @NotNull(message = "请求序列号不可为空")
-        @Max(value = 10, message = "111")
         private Integer requestNo;
 
         /**
          * 请求序列号
          */
-        @NotNull(message = "不能大于20")
-        @Max(value = 20, message = "xxx")
         private Integer requestNo1;
+
+
+        private List<String> removeKeys;
     }
     @GetMapping("/check")
-    public String check(@Validated CreateProjectReqVO createProjectReqVO
-            , @Validated(UserRequest.Save.class) UserRequest userRequest) {
+    public String check(@Validated CreateProjectReqVO createProjectReqVO) {
         System.out.println(createProjectReqVO);
         return "success" + createProjectReqVO.toString();
     }
