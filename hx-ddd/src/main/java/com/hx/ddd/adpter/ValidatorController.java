@@ -57,7 +57,7 @@ public class ValidatorController {
     }
 
     @GetMapping("/request")
-    public Object request(UserRequest userRequest) {
+    public Object request(@Validated UserRequest userRequest) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         return request;
     }

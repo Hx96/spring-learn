@@ -6,7 +6,9 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  * 用户请求
@@ -20,8 +22,10 @@ public class UserRequest {
     @Min(value = 10000000000000000L, groups = Update.class)
     private Long userId;
 
-    @NotNull(groups = {Save.class, Update.class})
-    @Length(min = 2, max = 10, groups = {Save.class, Update.class})
+//    @NotNull(groups = {Save.class, Update.class})
+//    @Length(min = 2, max = 10, groups = {Save.class, Update.class})
+    @NotEmpty(message = "不能为空")
+    @Pattern.List({ @Pattern(regexp = "[1-9]", message = "xx"), @Pattern(regexp = "[\\\\u4e00-\\\\u9fa5]+", message = "中文1") })
     private String userName;
 
     @NotNull(groups = {Save.class, Update.class})

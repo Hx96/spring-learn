@@ -15,6 +15,6 @@ public class EncryptIdValidator implements ConstraintValidator<EncryptId, String
 //            Matcher matcher = PATTERN.matcher(value);
 //            return matcher.find();
 //        }
-        return false;
+        return true;
     }
 }
