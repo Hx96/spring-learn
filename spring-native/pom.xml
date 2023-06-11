@@ -13,6 +13,12 @@
 
 
     <dependencies>
+        <!--引入flyway-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>6.1.0</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -94,6 +100,7 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.5</version>
         </dependency>
+        <!--https://blog.csdn.net/u012134942/article/details/97002288 -->
 
     </dependencies>
 

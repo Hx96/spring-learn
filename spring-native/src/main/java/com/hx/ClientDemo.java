@@ -2,6 +2,7 @@ package com.hx;
 
 import com.hx.map_auto.Animal;
 import com.mzt.logapi.starter.annotation.EnableLogRecord;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -30,6 +31,9 @@ public class ClientDemo implements CommandLineRunner {
 
     @Resource
     public List<Animal> animalsList;
+
+    @Value("#{${spring.mysql.ip}}")
+    private Map<String,String> map;
 
 
     public static void main(String[] args) {
@@ -73,5 +77,6 @@ public class ClientDemo implements CommandLineRunner {
         updateOrder.setOrderId(33333L);
         orderService.updateOrder(updateOrder);
         System.out.println(applicationContext);
+        System.out.println("map" + map.toString());
     }
 }

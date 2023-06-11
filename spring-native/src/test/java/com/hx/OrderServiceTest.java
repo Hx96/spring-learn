@@ -17,6 +17,13 @@ public class OrderServiceTest {
         Boolean result = orderService.updateOrder(new UpdateOrder());
         Assert.assertEquals(Boolean.TRUE, result);
     }
+
+    @Test
+    public void testSetter() {
+        SaveOrder saveOrder = new SaveOrder();
+        saveOrder.setId(0L);
+
+    }
 }
 
 //Generated with love by TestMe :) Please report issues and submit feature requests at: http://weirddev.com/forum#!/testme
