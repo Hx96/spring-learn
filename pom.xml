@@ -23,6 +23,7 @@
       <module>common</module>
       <module>hx-ddd</module>
       <module>hadoop</module>
+      <module>hx-kafka-producer</module>
   </modules>
   <packaging>pom</packaging>
   <parent>
