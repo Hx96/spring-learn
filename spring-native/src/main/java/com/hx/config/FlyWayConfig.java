@@ -2,29 +2,25 @@ package com.hx.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.stat.DruidDataSourceStatManager;
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.PostConstruct;
 import javax.management.ObjectName;
-import javax.sql.DataSource;
 import java.sql.DatabaseMetaData;
 import java.util.Map;
 import java.util.Set;
 
 @Slf4j
-@Configuration
-@RequiredArgsConstructor
-@EnableTransactionManagement
+//@Configuration
+//@RequiredArgsConstructor
+//@EnableTransactionManagement
 public class FlyWayConfig {
 
-    private final DataSource dataSource;
+//    private final DataSource dataSource;
 
     @Value("${spring.flyway.locations}")
     private String SQL_LOCATION;
