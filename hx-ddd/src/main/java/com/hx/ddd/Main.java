@@ -5,11 +5,13 @@ import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
+@EnableCircuitBreaker
 public class Main {
 
     static {
