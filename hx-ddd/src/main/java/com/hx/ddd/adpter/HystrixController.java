@@ -14,6 +14,7 @@ public class HystrixController {
     @HystrixCommand(fallbackMethod = "fallback")
     @GetMapping("/xxx")
     User getUserById(String id) {
+        System.out.println("test");
         throw new RuntimeException("getUserById command failed");
     }
 
