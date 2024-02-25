@@ -1,0 +1,29 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.1.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.1.0 http://maven.apache.org/xsd/assembly-2.1.0.xsd">
+
+    <id>example-assembly</id>
+
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>bin</directory>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+                <include>dependencies/*</include>
+            </includes>
+        </fileSet>
+        <!-- 可以包含其他文件集合 -->
+    </fileSets>
+
+</assembly>

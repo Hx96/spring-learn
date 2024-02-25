@@ -41,3 +41,9 @@ public void should_returnFalse_when_deleteContent_given_invokeFailed() {
 }
 
 ```
+
+### 业务编排
+
+1 锁-Redis分布式锁
+2 判
+3 操作
