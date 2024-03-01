@@ -22,7 +22,7 @@ fi
 JAVA_OPTS="-server -Xms$Xms -Xmx$Xmx -Xverify:none -XX:+DisableExplicitGC -Djava.awt.headless=true"
 # REMOTE_DEBUG="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=9101"
 
-SERVER_NAME='xx'
+SERVER_NAME='spring-native.jar'
 SERVER_PORT=8091
 
 # 项目配置文件

@@ -113,9 +113,15 @@
     <profiles>
         <profile>
             <id>dev</id>
+            <properties>
+                <package.environment>dev</package.environment>
+            </properties>
         </profile>
         <profile>
-            <id>test</id>
+            <id>uat</id>
+            <properties>
+                <package.environment>uat</package.environment>
+            </properties>
         </profile>
         <profile>
             <id>prod</id>
@@ -124,61 +130,48 @@
     </profiles>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
+
+        <resources>
+            <resource>
+                <directory>src/main/config/${package.environment}}</directory>
+                <includes>
+                    <include>*/properties</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+
         <plugins>
 
             <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/environment-specific-resources</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>src/main/resources</directory>
-                                    <includes>
-                                        <include>*.properties</include>
-                                        <!-- 其他需要拷贝的文件 -->
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
+                <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.2</version>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                                <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
-                            <!-- 可以选择性地指定需要拷贝的依赖项 -->
-                            <includeScope>runtime</includeScope>
-                        </configuration>
-                    </execution>
-                </executions>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.hx.ClientDemo</mainClass> <!-- 如果有可执行的入口类 -->
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
-
 
             <!-- 使用 maven-assembly-plugin 插件 -->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <descriptors>
-                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                        <descriptor>src/assembly/assembly.xml</descriptor>
                     </descriptors>
                     <archive>
                         <manifest>
