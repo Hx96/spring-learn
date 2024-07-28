@@ -24,6 +24,7 @@
       <module>hx-ddd</module>
       <module>hadoop</module>
       <module>hx-kafka-producer</module>
+      <module>document</module>
   </modules>
   <packaging>pom</packaging>
   <parent>
